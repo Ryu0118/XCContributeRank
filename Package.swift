@@ -19,7 +19,7 @@ let package = Package(
         // Targets can depend on other targets in this package, and on products in packages this package depends on.
         .executableTarget(
             name: "XCContributeRank",
-            dependencies: [.product(name: "ArgumentParser", package: "swift-argument-parser")]),
+            dependencies: ["XCContributeRankCore", .product(name: "ArgumentParser", package: "swift-argument-parser")]),
         .target(name: "XCContributeRankCore"),
         .testTarget(
             name: "XCContributeRankTests",
