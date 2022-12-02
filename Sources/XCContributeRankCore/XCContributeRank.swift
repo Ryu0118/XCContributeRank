@@ -20,7 +20,7 @@ public struct XCContributeRank {
             .map { try SwiftFileReader(file: $0).read() }
     }
     
-    public func getRanking() throws -> [TotalStatus] {
+    public func getRanking() throws -> [TotalContribution] {
         try totalize()
             .sorted { $0.line + $0.file > $1.line + $0.file }
     }
@@ -28,14 +28,14 @@ public struct XCContributeRank {
 
 private extension XCContributeRank {
     
-    func totalize() throws -> [TotalStatus] {
+    func totalize() throws -> [TotalContribution] {
         let statuses = try getAllStatuses()
         
-        var totalStatuses = [TotalStatus]()
+        var totalStatuses = [TotalContribution]()
         
         for status in statuses {
             guard let index = totalStatuses.firstIndex(where: { $0.author == status.author }) else {
-                let authorStatus = TotalStatus(
+                let authorStatus = TotalContribution(
                     author: status.author ?? "Unknown",
                     line: status.line,
                     comment: status.comment,
