@@ -1,6 +1,6 @@
 //
 //  RenderingPoint.swift
-//  
+//
 //
 //  Created by Ryu on 2022/12/02.
 //
@@ -13,12 +13,12 @@ struct RenderingPoint {
     let commentEndIndex: Int
     let blankEndIndex: Int
     let endIndexes: [Int]
-    
+
     init(_ array: [Int]) {
-        self.codeEndIndex = array[0]
-        self.filesEndIndex = array[1]
-        self.commentEndIndex = array[2]
-        self.blankEndIndex = array[3]
-        self.endIndexes = array
+        codeEndIndex = array[0]
+        filesEndIndex = array[1]
+        commentEndIndex = array[2]
+        blankEndIndex = array[3]
+        endIndexes = array
     }
 }
