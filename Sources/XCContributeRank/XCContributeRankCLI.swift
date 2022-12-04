@@ -21,4 +21,10 @@ struct XCContributeRankCLI: ParsableCommand {
 
         print(result)
     }
+    
+    mutating func validate() throws {
+        if !FileManager.default.fileExists(atPath: projectPath) {
+            throw XCContributeRankError.directoryNotExists
+        }
+    }
 }
