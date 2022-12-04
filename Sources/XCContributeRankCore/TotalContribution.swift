@@ -17,7 +17,7 @@ public struct TotalContribution {
 
 extension TotalContribution {
     mutating func increment<T: AdditiveArithmetic>(_ keyPath: KeyPath<Self, T>, value: T){
-        if let keyPath = keyPath as? WritableKeyPath{
+        if let keyPath = keyPath as? WritableKeyPath {
             self[keyPath: keyPath] += value
         }
     }

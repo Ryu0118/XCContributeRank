@@ -14,13 +14,7 @@ public struct XCContributeRank {
         self.root = root
     }
     
-    public func getAllStatuses() throws -> [FileStatus] {
-        try SwiftFileFinder(root: root)
-            .find()
-            .map { try SwiftFileReader(file: $0).read() }
-    }
-    
-    public func getRanking() throws -> [TotalContribution] {
+    public func getContributions() throws -> [TotalContribution] {
         try totalize()
             .sorted { $0.line + $0.file > $1.line + $0.file }
     }
@@ -36,7 +30,7 @@ private extension XCContributeRank {
         for status in statuses {
             guard let index = totalStatuses.firstIndex(where: { $0.author == status.author }) else {
                 let authorStatus = TotalContribution(
-                    author: status.author ?? "Unknown",
+                    author: status.author,
                     line: status.line,
                     comment: status.comment,
                     blank: status.blank,
@@ -58,6 +52,12 @@ private extension XCContributeRank {
         }
         
         return totalStatuses
+    }
+    
+    func getAllStatuses() throws -> [FileStatus] {
+        try SwiftFileFinder(root: root)
+            .find()
+            .map { try SwiftFileReader(file: $0).read() }
     }
     
 }
