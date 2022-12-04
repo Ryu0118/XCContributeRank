@@ -4,7 +4,7 @@ import XCContributeRankCore
 
 @main
 struct XCContributeRankCLI: ParsableCommand {
-    @Argument(help: "")
+    @Argument(help: "Project root directory")
     var projectPath: String
     
     static let _commandName: String = "rank"
