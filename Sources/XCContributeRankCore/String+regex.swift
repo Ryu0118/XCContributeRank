@@ -24,4 +24,13 @@ extension String {
             return NSString(string: self).substring(with: range)
         }
     }
+    
+    func match(patterns: [String]) -> String? {
+        for pattern in patterns {
+            if let result = match(pattern).first {
+                return result
+            }
+        }
+        return nil
+    }
 }
