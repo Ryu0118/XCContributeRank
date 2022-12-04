@@ -22,7 +22,7 @@ $ brew install ryu0118/xccontributerank/xccontributerank
 USAGE: rank <project-path>
 
 ARGUMENTS:
-  <project-path>
+  <project-path>          Project root directory
 
 OPTIONS:
   -h, --help              Show help information.
