@@ -7,9 +7,9 @@
 
 import Foundation
 
-public struct FileStatus {
-    public let line: Int
-    public let blank: Int
-    public let comment: Int
-    public let author: String?
+struct FileStatus {
+    let line: Int
+    let blank: Int
+    let comment: Int
+    let author: String
 }

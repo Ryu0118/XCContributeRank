@@ -3,11 +3,22 @@ import ArgumentParser
 import XCContributeRankCore
 
 @main
-public struct XCContributeRankCLI {
-    public static func main() throws {
-        let xccrank = XCContributeRank(root: URL(string: "/Users/shibuya/Swift-Application/MyPackage/VoteApp")!)
-        let status = try xccrank.getRanking()
-        print(status)
+struct XCContributeRankCLI: ParsableCommand {
+    @Argument(help: "Project root directory")
+    var projectPath: String
+    
+    static let _commandName: String = "rank"
+    
+    mutating func run() throws {
+        guard let url = URL(string: projectPath) else {
+            throw XCContributeRankError.invalidPath
+        }
+        
+        let xcContributeRank = XCContributeRank(root: url)
+        let contributions = try xcContributeRank.getContributions()
+        let decorator = Decorator(contributions: contributions)
+        let result = decorator.getDecoratedString()
+
+        print(result)
     }
 }
-

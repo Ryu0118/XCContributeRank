@@ -52,11 +52,17 @@ private extension SwiftFileReader {
             }
         }
         
-        return FileStatus(line: code, blank: blank, comment: comment, author: createdBy)
+        return FileStatus(line: code, blank: blank, comment: comment, author: createdBy ?? file.lastPathComponent)
     }
     
     func getCreatedBy(_ comment: String) -> String? {
-        comment.match(#"(?<=\Created by ).*?(?=\ on )"#).first
+        comment.match(patterns: [
+            #"(?<=\Created by ).*?(?=\ on )"#,
+            #"(?<=\Copyright \(c\) ).*?(?=\ -|\(|<)"#,
+            #"(?<=\Copyright \(C\) ).*?(?=\ -|\(|<)"#,
+            #"(?<=\Copyright © ).*?(?=\.| -|\(\<)"#,
+            #"(?<=\Copyright ).*?(?=\.|\n)"#,
+        ])
     }
     
 }

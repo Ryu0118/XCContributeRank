@@ -7,6 +7,7 @@
 
 import Foundation
 
-enum XCContributeRankError: Error {
+public enum XCContributeRankError: Error {
     case cannotReadDataFromFile
+    case invalidPath
 }

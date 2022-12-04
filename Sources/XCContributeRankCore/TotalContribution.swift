@@ -1,5 +1,5 @@
 //
-//  TotalStatus.swift
+//  TotalContribution.swift
 //  
 //
 //  Created by Ryu on 2022/12/02.
@@ -7,7 +7,7 @@
 
 import Foundation
 
-public struct TotalStatus {
+public struct TotalContribution {
     public let author: String
     public private(set) var line: Int
     public private(set) var comment: Int
@@ -15,9 +15,9 @@ public struct TotalStatus {
     public private(set) var file: Int
 }
 
-extension TotalStatus {
+extension TotalContribution {
     mutating func increment<T: AdditiveArithmetic>(_ keyPath: KeyPath<Self, T>, value: T){
-        if let keyPath = keyPath as? WritableKeyPath{
+        if let keyPath = keyPath as? WritableKeyPath {
             self[keyPath: keyPath] += value
         }
     }

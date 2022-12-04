@@ -15,16 +15,16 @@ enum SwiftLineType {
     init(_ line: String) {
         let trimmed = line.trimmingCharacters(in: .whitespaces)
 
-        if trimmed.hasPrefix("//") || trimmed.hasPrefix("///") || SwiftLineType.isCommentContinuing
-        {
-            self = .comment
-        }
-        else if trimmed.hasPrefix("/*") {
+        if trimmed.contains("/*") {
             SwiftLineType.isCommentContinuing = true
             self = .comment
         }
-        else if trimmed.hasPrefix("*/") {
+        else if trimmed.contains("*/") {
             SwiftLineType.isCommentContinuing = false
+            self = .comment
+        }
+        else if trimmed.hasPrefix("//") || trimmed.hasPrefix("///") || SwiftLineType.isCommentContinuing
+        {
             self = .comment
         }
         else if trimmed.isEmpty {

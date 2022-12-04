@@ -7,7 +7,7 @@ let package = Package(
     name: "XCContributeRank",
     platforms: [.macOS(.v10_13)],
     products: [
-        .executable(name: "xccrank", targets: ["XCContributeRank"])
+        .executable(name: "rank", targets: ["XCContributeRank"])
     ],
     dependencies: [
         // Dependencies declare other packages that this package depends on.
