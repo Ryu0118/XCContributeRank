@@ -14,7 +14,7 @@
 
 ## Installation
 ```
-$ brew install ryu0118/xccontributerank/xccontributerank
+$ brew install ryu0118/rank/xccontributerank
 ```
 
 ## Usage
